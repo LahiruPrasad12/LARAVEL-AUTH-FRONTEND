@@ -12,8 +12,11 @@
           <a href="">Dash board</a>
         </l1>
         <l1>
-          <a href="">Logout</a>
+          <a href="#" @click="logout">Logout</a>
         </l1>
+        <nuxt-link :to="{name:'viewProfile'}" class="px-2">
+          Profile
+        </nuxt-link>
       </template>
       <template v-if="!$auth.loggedIn">
         <l1>
@@ -30,3 +33,14 @@
     </li>
   </ul>
 </template>
+
+<script>
+export default {
+  methods: {
+    async logout () {
+      await this.$auth.logout()
+      this.$router.replace({ name: 'login' })
+    }
+  }
+}
+</script>
