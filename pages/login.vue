@@ -1,6 +1,8 @@
 <template>
   <form @submit.prevent="login">
     <div class="mb-4 mt-10">
+      <h1>Login Page</h1><hr><br>
+
       <label for="email" class="block">Email</label>
       <input
         id="email"
@@ -22,6 +24,7 @@
         class="border border-gray-400 py-1 px-2 rounded"
       >
     </div>
+
     <button type="submit" class="border border-gray-400 py-1 px-2 rounded">
       Login
     </button>
@@ -35,6 +38,7 @@ export default {
       form: {
         email: '',
         password: ''
+
       }
     }
   },

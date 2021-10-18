@@ -1,6 +1,7 @@
 <template>
-  <form @submit.prevent="login">
+  <form @submit.prevent="register">
     <div class="mb-4 mt-10">
+      <h1>Register Page</h1><hr><br>
       <div class="mb-4">
         <label for="name" class="block">name</label>
         <input
@@ -33,8 +34,19 @@
         class="border border-gray-400 py-1 px-2 rounded"
       >
     </div>
+    <div class="mb-4">
+      <label for="password_confirmation" class="block">Password Confirmation</label>
+      <input
+        id="password"
+        v-model="form.password_confirmation"
+        type="password"
+        name="password_confirmation"
+        placeholder="Confirm Password"
+        class="border border-gray-400 py-1 px-2 rounded"
+      >
+    </div>
     <button type="submit" class="border border-gray-400 py-1 px-2 rounded">
-      Login
+      Register
     </button>
   </form>
 </template>
@@ -46,18 +58,21 @@ export default {
       form: {
         email: '',
         password: '',
-        name: ''
+        name: '',
+        password_confirmation: ''
       }
     }
   },
   methods: {
-    async login () {
+    async register () {
       try {
+        await this.$axios.get('sanctum/csrf-cookie')
+        await this.$axios.post('register', this.form)
         await this.$auth.loginWith('laravelSanctum', {
           data: this.form
         })
       } catch (e) {
-
+        alert(e.message)
       }
     }
   }
