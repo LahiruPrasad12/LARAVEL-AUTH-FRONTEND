@@ -11,7 +11,9 @@
           </nuxt-link>
         </l1>
         <l1>
-          <a href="">Dash board</a>
+          <nuxt-link :to="{name:'dashboard'}">
+            Dash board
+          </nuxt-link>
         </l1>
         <l1>
           <a href="#" @click="logout">Logout</a>
