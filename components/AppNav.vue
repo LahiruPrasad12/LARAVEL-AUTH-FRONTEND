@@ -6,7 +6,9 @@
       </nuxt-link>
       <template v-if="$auth.loggedIn">
         <l1>
-          <a href="">{{ $auth.user.name }}</a>
+          <nuxt-link :to="{name:'profile'}">
+            {{ $auth.user.name }}
+          </nuxt-link>
         </l1>
         <l1>
           <a href="">Dash board</a>
@@ -14,9 +16,6 @@
         <l1>
           <a href="#" @click="logout">Logout</a>
         </l1>
-        <nuxt-link :to="{name:'viewProfile'}" class="px-2">
-          Profile
-        </nuxt-link>
       </template>
       <template v-if="!$auth.loggedIn">
         <l1>
