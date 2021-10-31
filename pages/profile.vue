@@ -48,7 +48,7 @@ export default {
         await this.$axios.get('sanctum/csrf-cookie')
         await this.$axios.put('user/profile-information', this.form)
 
-        await this.$auth.fetchUser()
+        await this.$auth.fetchUser()// this part used to update displayed name without page refreshing when user upade his data
       } catch (e) {
 
       }
